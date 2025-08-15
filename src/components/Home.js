@@ -5,7 +5,7 @@ import './Home.css';
 
 // Import logo images
 import reactLogo from '../images/icons8-react.svg';
-import angularLogo from '../images/icons8-angular-96.png';
+import angularLogo from '../images/angular.svg';
 import emberLogo from '../images/e-circle-icon-4c.png';
 
 const Home = () => {
