@@ -1,103 +1,263 @@
-// Home.js - Created by Edison Gamba with professional styling and Tailwind CSS
+// Home.js - Accessible Framework Comparison Overview by Edison Gamba
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './Home.css';
+
+// Import logo images
+import reactLogo from '../images/icons8-react.svg';
+import angularLogo from '../images/icons8-angular-96.png';
+import emberLogo from '../images/e-circle-icon-4c.png';
 
 const Home = () => {
+  const frameworks = [
+    {
+      name: 'React',
+      logo: reactLogo,
+      bgColor: 'react-theme',
+      description: 'A JavaScript library for building user interfaces with component-based architecture',
+      popularity: 87,
+      stars: '220k+',
+      downloads: '20M+',
+      path: '/react',
+      yearCreated: 2013,
+      maintainer: 'Meta (Facebook)'
+    },
+    {
+      name: 'Angular',
+      logo: angularLogo,
+      bgColor: 'angular-theme',
+      description: 'Full-featured platform for building mobile and desktop web applications',
+      popularity: 72,
+      stars: '93k+',
+      downloads: '3M+',
+      path: '/angular',
+      yearCreated: 2016,
+      maintainer: 'Google'
+    },
+    {
+      name: 'Ember.js',
+      logo: emberLogo,
+      bgColor: 'ember-theme',
+      description: 'Framework for creating ambitious web applications with conventions',
+      popularity: 45,
+      stars: '22k+',
+      downloads: '150K+',
+      path: '/ember',
+      yearCreated: 2011,
+      maintainer: 'Ember Core Team'
+    }
+  ];
+
+  const comparisonMetrics = [
+    { name: 'React', learning: 70, performance: 85, community: 95, jobs: 90 },
+    { name: 'Angular', learning: 90, performance: 75, community: 80, jobs: 75 },
+    { name: 'Ember', learning: 85, performance: 70, community: 60, jobs: 40 }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-secondary-50 to-primary-50">
+    <div className="home-page">
+      {/* Skip Link for Accessibility */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-secondary-900 mb-6">
-              Welcome to Our
-              <span className="block bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
-                Single Page Application
-              </span>
+      <section className="hero-section" aria-labelledby="hero-title">
+        <div className="hero-bg"></div>
+        <div className="container">
+          <div className="hero-content">
+            <h1 id="hero-title" className="hero-title">
+              <span className="hero-title-main">JavaScript Framework</span>
+              <span className="hero-title-accent">Comparison Hub</span>
             </h1>
-            <p className="text-xl md:text-2xl text-secondary-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Experience seamless navigation with React Router and modern design principles
+            <p className="hero-description">
+              Compare the most popular JavaScript frameworks and make informed decisions for your next project.
+              Comprehensive analysis with real-world statistics and expert insights.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary text-lg px-8 py-3">
-                Get Started
-              </button>
-              <button className="btn-secondary text-lg px-8 py-3">
-                Learn More
-              </button>
+            <div className="hero-stats">
+              <div className="stat-badge">
+                <span className="stat-number">3</span>
+                <span className="stat-label">Major Frameworks</span>
+              </div>
+              <div className="stat-badge">
+                <span className="stat-number">A11Y</span>
+                <span className="stat-label">WCAG Compliant</span>
+              </div>
+              <div className="stat-badge">
+                <span className="stat-number">2024</span>
+                <span className="stat-label">Updated Data</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
-              Modern Web Development
+      {/* Main Content */}
+      <main id="main-content">
+        {/* Framework Grid Section */}
+        <section className="frameworks-section py-20" aria-labelledby="frameworks-title">
+          <div className="container">
+            <h2 id="frameworks-title" className="section-title">
+              Choose Your Framework
             </h2>
-            <p className="text-lg text-secondary-600 max-w-2xl mx-auto">
-              Built with the latest technologies for optimal performance and user experience
+            <p className="section-description">
+              Explore detailed comparisons of the most popular JavaScript frameworks
             </p>
+            
+            <div className="frameworks-grid">
+              {frameworks.map((framework, index) => (
+                <article 
+                  key={framework.name}
+                  className={`framework-card ${framework.bgColor}`}
+                >
+                  <Link 
+                    to={framework.path}
+                    className="framework-link"
+                    aria-label={`Learn more about ${framework.name}`}
+                  >
+                    <div className="framework-header">
+                      <div className="framework-logo">
+                        <img 
+                          src={framework.logo}
+                          alt={`${framework.name} logo`}
+                          width={64}
+                          height={64}
+                          className="logo-icon"
+                        />
+                      </div>
+                      <h3 className="framework-name">{framework.name}</h3>
+                    </div>
+                    
+                    <p className="framework-description">
+                      {framework.description}
+                    </p>
+                    
+                    <div className="framework-stats">
+                      <div className="stat-row">
+                        <span className="stat-label">Popularity:</span>
+                        <span className="stat-value">{framework.popularity}%</span>
+                      </div>
+                      <div className="stat-row">
+                        <span className="stat-label">GitHub Stars:</span>
+                        <span className="stat-value">{framework.stars}</span>
+                      </div>
+                      <div className="stat-row">
+                        <span className="stat-label">Weekly Downloads:</span>
+                        <span className="stat-value">{framework.downloads}</span>
+                      </div>
+                      <div className="stat-row">
+                        <span className="stat-label">Created:</span>
+                        <span className="stat-value">{framework.yearCreated}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="framework-cta">
+                      <span className="cta-text">Explore {framework.name}</span>
+                      <svg className="cta-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                      </svg>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="text-center p-6 rounded-xl bg-primary-50 hover:bg-primary-100 transition-colors duration-300">
-              <div className="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-secondary-900 mb-2">Fast Performance</h3>
-              <p className="text-secondary-600">
-                Optimized for speed with React's virtual DOM and efficient rendering
-              </p>
-            </div>
+        </section>
 
-            {/* Feature 2 */}
-            <div className="text-center p-6 rounded-xl bg-success-50 hover:bg-success-100 transition-colors duration-300">
-              <div className="w-16 h-16 bg-success-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-secondary-900 mb-2">Responsive Design</h3>
-              <p className="text-secondary-600">
-                Beautiful on all devices with Tailwind CSS responsive utilities
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="text-center p-6 rounded-xl bg-accent-50 hover:bg-accent-100 transition-colors duration-300">
-              <div className="w-16 h-16 bg-accent-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-secondary-900 mb-2">Accessibility First</h3>
-              <p className="text-secondary-600">
-                Built with WCAG guidelines for an inclusive user experience
-              </p>
+        {/* Comparison Metrics Section */}
+        <section className="metrics-section py-20" aria-labelledby="metrics-title">
+          <div className="container">
+            <h2 id="metrics-title" className="section-title">
+              Quick Comparison
+            </h2>
+            <p className="section-description">
+              Compare key metrics across all frameworks at a glance
+            </p>
+            
+            <div className="metrics-grid">
+              {comparisonMetrics.map((metric, index) => (
+                <div key={metric.name} className="metric-card">
+                  <h3 className="metric-framework">{metric.name}</h3>
+                  
+                  <div className="metric-bars">
+                    <div className="metric-item">
+                      <div className="metric-header">
+                        <span className="metric-label">Learning Curve</span>
+                        <span className="metric-percentage">{metric.learning}%</span>
+                      </div>
+                      <div className="progress-bar">
+                        <div 
+                          className="progress-fill learning"
+                          style={{ width: `${metric.learning}%` }}
+                          role="progressbar"
+                          aria-valuenow={metric.learning}
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                          aria-label={`Learning curve difficulty: ${metric.learning}%`}
+                        ></div>
+                      </div>
+                    </div>
+                    
+                    <div className="metric-item">
+                      <div className="metric-header">
+                        <span className="metric-label">Performance</span>
+                        <span className="metric-percentage">{metric.performance}%</span>
+                      </div>
+                      <div className="progress-bar">
+                        <div 
+                          className="progress-fill performance"
+                          style={{ width: `${metric.performance}%` }}
+                          role="progressbar"
+                          aria-valuenow={metric.performance}
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                          aria-label={`Performance rating: ${metric.performance}%`}
+                        ></div>
+                      </div>
+                    </div>
+                    
+                    <div className="metric-item">
+                      <div className="metric-header">
+                        <span className="metric-label">Community</span>
+                        <span className="metric-percentage">{metric.community}%</span>
+                      </div>
+                      <div className="progress-bar">
+                        <div 
+                          className="progress-fill community"
+                          style={{ width: `${metric.community}%` }}
+                          role="progressbar"
+                          aria-valuenow={metric.community}
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                          aria-label={`Community size: ${metric.community}%`}
+                        ></div>
+                      </div>
+                    </div>
+                    
+                    <div className="metric-item">
+                      <div className="metric-header">
+                        <span className="metric-label">Job Market</span>
+                        <span className="metric-percentage">{metric.jobs}%</span>
+                      </div>
+                      <div className="progress-bar">
+                        <div 
+                          className="progress-fill jobs"
+                          style={{ width: `${metric.jobs}%` }}
+                          role="progressbar"
+                          aria-valuenow={metric.jobs}
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                          aria-label={`Job opportunities: ${metric.jobs}%`}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary-600 to-primary-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-primary-100 mb-8">
-            Explore our application and see how modern web development can enhance your experience
-          </p>
-          <button className="bg-white text-primary-700 hover:bg-primary-50 font-semibold px-8 py-3 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-600">
-            Explore Now
-          </button>
-        </div>
-      </section>
+        </section>
+      </main>
     </div>
   );
 };

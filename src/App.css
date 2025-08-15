@@ -1,7 +1,257 @@
-/* App.css - Global styles - Modified by Edison Gamba */
-/* Main styles are now in index.css with utility classes */
-/* This file is kept for any app-specific styles if needed */
+/* App.css - Framework Comparison SPA with A11Y-compliant colors by Edison Gamba */
 
+/* A11Y-compliant color palette */
+:root {
+  /* High contrast colors for accessibility */
+  --bg-primary: #0a0f1c;
+  --bg-secondary: #1a2332;
+  --bg-tertiary: #2a3441;
+  
+  /* Text colors with WCAG AA compliance */
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+  
+  /* Framework colors with proper contrast ratios */
+    --react-primary: #61dafb;
+  --react-secondary: #20232a;
+  --angular-primary: #dd0031;
+  --angular-secondary: #c3002f;
+  --ember-primary: #e04e39;
+  --ember-secondary: #9b2918;
+  
+  /* Accent colors */
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-green: #10b981;
+  --accent-yellow: #f59e0b;
+  
+  /* Border and shadow colors */
+  --border-primary: #374151;
+  --border-secondary: #4b5563;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--accent-blue);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Container utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Button utilities */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Card utilities */
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--border-secondary);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+/* Grid utilities */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 768px) {
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Typography */
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
+.text-4xl { font-size: 2.25rem; }
+.text-5xl { font-size: 3rem; }
+.text-6xl { font-size: 3.75rem; }
+
+@media (max-width: 768px) {
+  .text-6xl { font-size: 2.5rem; }
+  .text-5xl { font-size: 2rem; }
+  .text-4xl { font-size: 1.875rem; }
+}
+
+/* Spacing utilities */
+.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.mb-16 { margin-bottom: 4rem; }
+.mb-12 { margin-bottom: 3rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+
+@media (max-width: 768px) {
+  .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
+  .py-16 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .mb-16 { margin-bottom: 2rem; }
+  .mb-12 { margin-bottom: 1.5rem; }
+}
+
+/* Framework-specific colors */
+.react-theme {
+  --primary-color: var(--react-primary);
+  --secondary-color: var(--react-secondary);
+}
+
+.angular-theme {
+  --primary-color: var(--angular-primary);
+  --secondary-color: var(--angular-secondary);
+}
+
+.ember-theme {
+  --primary-color: var(--ember-primary);
+  --secondary-color: var(--ember-secondary);
+}
+
+/* Code blocks */
+pre, code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+}
+
+pre {
+  padding: 1.5rem;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+code {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* App container */
 .App {
   min-height: 100vh;
+  background-color: var(--bg-primary);
 }
