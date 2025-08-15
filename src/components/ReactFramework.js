@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import reactLogo from '../images/icons8-react.svg';
-import './FrameworkPages.css';
+import './ReactFramework.css';
 
 const ReactFramework = () => {
   const reactStats = {

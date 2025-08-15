@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import emberLogo from '../images/e-circle-icon-4c.png';
-import './FrameworkPages.css';
+import './EmberFramework.css';
 
 const EmberFramework = () => {
   const emberStats = {
