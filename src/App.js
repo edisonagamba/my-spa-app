@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Footer from './components/Footer';
-// import ReactFramework from './components/ReactFramework';
-// import AngularFramework from './components/AngularFramework';
-// import EmberFramework from './components/EmberFramework';
+import ReactFramework from './components/ReactFramework';
+import AngularFramework from './components/AngularFramework';
+import EmberFramework from './components/EmberFramework';
 import './App.css';
 
 function App() {
@@ -17,9 +17,9 @@ function App() {
         <main className="pt-16">
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/react" element={<ReactFramework />} />
+            <Route path="/react" element={<ReactFramework />} />
             <Route path="/angular" element={<AngularFramework />} />
-            <Route path="/ember" element={<EmberFramework />} /> */}
+            <Route path="/ember" element={<EmberFramework />} />
           </Routes>
         </main>
         <Footer />
